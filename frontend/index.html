@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app='people'> 
+
+<head>
+    <title>Express</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body ng-controller='tableController as vm'>
+    <div class='container'>
+        <table class="table" ng-class="vm.table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Likes Javscript</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in vm.data">
+                   
+                    <td>{{data.name}}</td>
+                    <td>{{data.age}}</td>
+                    <td><input id="checkBox" ng-checked="data.JS" type="checkbox"></td> 
+                    <td><button ng-click="vm.delete(data._id)" class='delete'>X</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <main>
+        <form name='userDetails' ng-submit='vm.createData(userDetails.$valid)'>
+            Name:<input type='text' ng-model='vm.user.name' required> 
+            Age:<input type='text' ng-model='vm.user.age' required>
+            Do You Like JS? <input id="checkBox" type="checkbox" ng-model='vm.user.JS'> 
+            <button>Go</button>
+        </form>
+        <p>User: {{vm.user.id}} {{vm.user.name}} {{vm.user.age}}</p>
+    </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src='js/main.js'></script>
+    <script src='js/services/api.js'></script>
+    <script src='js/controllers/tableController.js'></script>
+</body>
+
+</html>  
