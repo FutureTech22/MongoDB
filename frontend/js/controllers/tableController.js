@@ -40,13 +40,13 @@
                         vm.data = response.data;
                     })
                 }
-                //send user by id to the api
+                //send user by id to the api <------is that even right???
                 vm.getUserData = function (id) {
                     let data = api.deleteData(id);
                     data.then(res=> {
                         let getNewUser = api.getData();
                          getNew.then(res => { //getting the data back from the api
-                            console.log("Hers your", res);
+                            console.log("Heres your data", res);
                             vm.data = res.data 
                         })
                     });
